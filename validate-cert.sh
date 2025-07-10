@@ -34,7 +34,7 @@ fi
 # 1. Check signature algorithm
 echo "1. Checking Signature Algorithm..."
 sig_algo=$(openssl x509 -in "$TLSI_CRT" -text -noout | grep "Signature Algorithm" | head -1 | awk '{print $3}')
-if [ "$sig_algo" == "sha256WithRSAEncryption" ]; then
+if [[ "$sig_algo" == "sha256WithRSAEncryption" || "$sig_algo" == "sha512WithRSAEncryption" ]]; then
     echo "   ✅ Signature Algorithm: $sig_algo"
 else
     echo "   ❌ Invalid Signature Algorithm: $sig_algo"
