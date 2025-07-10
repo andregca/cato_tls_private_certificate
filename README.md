@@ -82,7 +82,7 @@ install-certs/
 
 The `validate-cert.sh` script checks:
 
-- Signature algorithm (SHA256 or SHA512)
+- Signature algorithm (SHA256)
 - Minimum key size (2048 bits)
 - Basic Constraints: CA\:TRUE
 - Key Usage: Certificate Sign, CRL Sign
