@@ -1,0 +1,29 @@
+[req]
+default_bits = 2048
+prompt = no
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+
+[req_distinguished_name]
+C = BR
+ST = RJ
+L = Rio de Janeiro
+O = ACME Corporation
+OU = IT Cybersecurity Department
+CN = ACME TLS Inspection 2025
+
+[v3_req]
+# Basic Constraints - CA:TRUE is required for TLS Inspection
+basicConstraints = critical, CA:TRUE
+# Key Usage - Required for certificate signing and CRL signing
+keyUsage = critical, keyCertSign, cRLSign
+# Extended Key Usage for TLS Inspection (optional but recommended)
+extendedKeyUsage = serverAuth, clientAuth
+
+[v3_sign]
+# Section used when signing the CSR - includes all required extensions
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+basicConstraints = critical, CA:TRUE
+keyUsage = critical, keyCertSign, cRLSign
+extendedKeyUsage = serverAuth, clientAuth
